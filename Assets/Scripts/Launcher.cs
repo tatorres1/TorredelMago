@@ -5,7 +5,8 @@ using Photon.Pun;
 using Photon.Realtime;
 public class Launcher : MonoBehaviourPunCallbacks
 {
-    public GameObject playerPrefab;
+    public GameObject playerPrefab1;
+    public GameObject playerPrefab2;
     public Transform spawnPoint;
 
     void Start()
@@ -37,8 +38,9 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         Debug.Log("Joined Room");
 
-        if (playerPrefab != null && PhotonNetwork.IsConnectedAndReady && PhotonNetwork.LocalPlayer.ActorNumber <= 2)
+        if (PhotonNetwork.IsConnectedAndReady)
         {
+            GameObject playerPrefab = PhotonNetwork.LocalPlayer.ActorNumber == 1 ? playerPrefab1 : playerPrefab2;
             PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation);
         }
     }

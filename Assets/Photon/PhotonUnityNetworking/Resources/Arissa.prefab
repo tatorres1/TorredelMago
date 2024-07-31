@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 7474348646116258912}
   m_Layer: 0
   m_Name: Arissa
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,6 +268,8 @@ MonoBehaviour:
   runSpeed: 5
   rotationSpeed: 250
   animator: {fileID: 6267292031291684885}
+  scoreManager: {fileID: 0}
+  score: 0
 --- !u!54 &4500056335885966922
 Rigidbody:
   m_ObjectHideFlags: 0

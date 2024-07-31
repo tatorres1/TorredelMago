@@ -1170,7 +1170,7 @@ GameObject:
   - component: {fileID: 8240999770563861877}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1279,6 +1279,8 @@ MonoBehaviour:
   runSpeed: 4
   rotationSpeed: 250
   animator2: {fileID: 7810158841869924020}
+  scoreManager: {fileID: 0}
+  score: 0
 --- !u!114 &5531822970830033610
 MonoBehaviour:
   m_ObjectHideFlags: 0

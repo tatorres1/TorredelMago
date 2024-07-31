@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviourPunCallbacks
 {
     public float runSpeed = 4;
     public float rotationSpeed = 250;
     public Animator animator;
     private float x, y;
-    public ScoreManager scoreManager;
+    private ScoreManager scoreManager;
     public int score = 0;
     private int winScore = 2;
 
@@ -40,13 +40,15 @@ public class NewBehaviourScript : MonoBehaviour
     {
         score++;
         // Actualiza la puntuación en la base de datos
-        ScoreManager.Instance.UpdateScore(PhotonNetwork.LocalPlayer.ActorNumber.ToString(), score);
+        Debug.Log("nuevo puntaje: " + score);
+        Debug.Log("actualizando el nuevo puntaje epara el jugador ID: " + PhotonNetwork.LocalPlayer.ActorNumber.ToString());
+
     }
 
     private void WinGame()
     {
         // Lógica para ganar el juego, por ejemplo, cargar una escena de victoria
-        Debug.Log("You win!");
-        SceneManager.LoadScene("VictoryScene"); // Asegúrate de que esta escena exista
+        Debug.Log("Ganaste!");
+        //SceneManager.LoadScene("VictoryScene"); // Asegúrate de que esta escena exista
     }
 }

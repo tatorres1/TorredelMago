@@ -744,7 +744,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7b1bfb9ad699b40b7c1e108c3d7254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 3587326483641005684, guid: 5f67fcdeb85cb5c4fa0e317416dcd802, type: 3}
+  playerPrefab1: {fileID: 815741547294980309, guid: 082fa60efd74b5343b3ef3d07d6b8988, type: 3}
+  playerPrefab2: {fileID: 3587326483641005684, guid: 5f67fcdeb85cb5c4fa0e317416dcd802, type: 3}
   spawnPoint: {fileID: 672733821}
 --- !u!4 &1797722333
 Transform:
@@ -903,7 +904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 815741547294980309, guid: 082fa60efd74b5343b3ef3d07d6b8988, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 815741547294980309, guid: 082fa60efd74b5343b3ef3d07d6b8988, type: 3}
       propertyPath: m_TagString
@@ -912,7 +913,7 @@ PrefabInstance:
     - target: {fileID: 6494181674482548515, guid: 082fa60efd74b5343b3ef3d07d6b8988, type: 3}
       propertyPath: scoreManager
       value: 
-      objectReference: {fileID: 795640989}
+      objectReference: {fileID: 0}
     - target: {fileID: 8467252872944208854, guid: 082fa60efd74b5343b3ef3d07d6b8988, type: 3}
       propertyPath: sceneViewId
       value: 2

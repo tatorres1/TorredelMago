@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        // Asegurarse de que solo haya una instancia de ScoreManager
+        // Asegurarse de que solo haya una instancia ScoreManager
         if (Instance == null)
         {
             Instance = this;
@@ -25,14 +25,22 @@ public class ScoreManager : MonoBehaviour
     // Método para actualizar el puntaje en la base de datos
     public void UpdateScore(string playerId, int score)
     {
+        Debug.Log("Starting UpdateScore");
+        Debug.Log("Player ID: " + playerId);
+        Debug.Log("Score: " + score);
+
         StartCoroutine(UpdateScoreCoroutine(playerId, score));
     }
 
     private IEnumerator UpdateScoreCoroutine(string playerId, int score)
     {
+        Debug.Log("dentro del score");
+
         WWWForm form = new WWWForm();
         form.AddField("player_id", playerId);
         form.AddField("score", score.ToString());
+
+        Debug.Log("Datos: player_id=" + playerId + ", score=" + score);
 
         using (UnityWebRequest www = UnityWebRequest.Post(updateScoreUrl, form))
         {
@@ -40,11 +48,12 @@ public class ScoreManager : MonoBehaviour
 
             if (www.result == UnityWebRequest.Result.Success)
             {
-                Debug.Log("Score updated successfully");
+                Debug.Log("Score actualizado exitoso: " + www.downloadHandler.text);
             }
             else
             {
                 Debug.LogError("Error updating score: " + www.error);
+                Debug.LogError("Response: " + www.downloadHandler.text);
             }
         }
     }
