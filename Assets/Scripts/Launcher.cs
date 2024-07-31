@@ -15,25 +15,37 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Conetado al master");
+        Debug.Log("Connected to Master");
         PhotonNetwork.JoinLobby();
     }
 
     public override void OnJoinedLobby()
     {
-        Debug.Log("Conectado y dentro del Lobby");
-        PhotonNetwork.JoinRandomOrCreateRoom();
+        Debug.Log("Joined Lobby");
+        PhotonNetwork.JoinRandomOrCreateRoom(
+            null, // Custom room properties (none in this case)
+            2, // MaxPlayers
+            MatchmakingMode.FillRoom, // Matching type
+            null, // TypedLobby (use default)
+            null, // SqlLobbyFilter (none)
+            null, // ExpectedUsers (none)
+            new RoomOptions { MaxPlayers = 2 } // RoomOptions
+        );
     }
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("Ingreso a la sala");
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation);
+        Debug.Log("Joined Room");
+
+        if (playerPrefab != null && PhotonNetwork.IsConnectedAndReady && PhotonNetwork.LocalPlayer.ActorNumber <= 2)
+        {
+            PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation);
+        }
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log("Error al crear la sala, ingresa de nuevo");
-        PhotonNetwork.CreateRoom(null, new RoomOptions());
+        Debug.Log("Failed to join a random room. Creating a new room.");
+        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 2 });
     }
 }
